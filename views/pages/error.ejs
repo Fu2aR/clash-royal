@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="assets/app.js"></script>    
+</head>
+  <body>
+    <header>
+    <ul>
+        <li>
+            <a class="btn btn-primary btn-lg active">Clan</a>
+            <a class="btn btn-primary btn-lg active">Joueur</a>
+            <a class="btn btn-primary btn-lg active">Cartes</a>
+            <a class="btn btn-primary btn-lg active" href="/classement">Classement</a>
+        </li>
+    </ul>
+</header>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0c16;
+    font-family: "Poppins", sans-serif;
+}
+
+header, ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    color: white;
+}
+
+header {
+    background-color: #0b0c16;
+    box-shadow: 0 0 20px 0 #FFFFFF;
+}
+
+header ul li {
+    list-style-type: none;
+}
+
+header ul li:not(:nth-child(3)) {
+    margin-right: 30px;
+}
+
+header ul li a:hover {
+    transition: 0.3s all;
+    background-color: #494848d5;
+}
+
+header ul li a {
+    color: #ccc;
+    outline: none;
+    text-decoration: none;
+    transition: 0.3s all;
+    padding: 13px 20px;
+    border-radius: 5px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+    box-shadow: #0b0c16;
+}
+
+
+section.firstclass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+section.firstclass .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+
+
+section.firstclass .center p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #0000FF;
+}
+
+label {
+    color: #34C924;
+}
+
+.container {
+  height: 10px;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+section.firstclass .center button {
+    background-color: #6246ea;
+    border-style: none;
+    color: #fffffe;
+    padding: 10px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+</style>
+<section id="first" class="firstclass">
+        <div class="center">
+            <p><%= message %></p>
+            <div class="row justify-content-md-center" style="margin-top: 30px">
+                <div class="col-md-4">
+                    <form method="POST" action="/home">
+                        <div class="form-group">
+                            <label for="firstNameInput" color="green">Joueur</label>
+                            <input name="firstName" type="text" class="form-control" id="firstNameInput" required>
+                            <button type="submit">Rechercher</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p style="color: white">Made with ❤️ by φυζαρ</p>
+        </footer>
+    </section>
+  
+  </body>`)

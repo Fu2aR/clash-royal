@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="assets/app.js"></script>    
+</head>
+  <body>
+    <header>
+    <ul>
+        <li>
+            <form method="POST" action="/home">
+                <div class="form-group">
+                    <label for="firstNameInput" color="green" flex-direction="row" align-items="normal">Joueur &nbsp;</label>
+                    <input name="firstName" type="text" class="form-control" id="firstNameInput" required><p>&nbsp;</p>
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
+                </div>
+            </form>
+        </li>
+        <li>
+            <a class="btn btn-primary btn-lg active" href="/clan">Clan</a>
+            <a class="btn btn-primary btn-lg active" href="/">Joueur</a>
+            <a class="btn btn-primary btn-lg active" href="/cartes">Cartes</a>
+            <a class="btn btn-primary btn-lg active" href="/classement">Classement</a>
+        </li>
+    </ul>
+</header>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0c16;
+    font-family: "Poppins", sans-serif;
+}
+
+header, ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    color: white;
+}
+
+header {
+    background-color: #0b0c16;
+    box-shadow: 0 0 20px 0 #FFFFFF;
+}
+
+header ul li {
+    list-style-type: none;
+}
+
+header ul li:not(:nth-child(3)) {
+    margin-right: 30px;
+}
+
+header ul li a:hover {
+    transition: 0.3s all;
+    /*background-color: #494848d5;*/
+    background-color: white;
+    color: black
+}
+
+header ul li button:hover {
+    transition: 0.3s all;
+    background-color: white;
+    color: black;
+}
+
+header ul li a {
+    color: #ccc;
+    outline: none;
+    text-decoration: none;
+    transition: 0.3s all;
+    padding: 13px 20px;
+    border-radius: 5px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+    box-shadow: #0b0c16;
+}
+
+
+section.firstclass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+section.firstclass .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+section.deux {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*min-height: 70vh;*/
+}
+
+section.trois {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*min-height: 70vh;*/
+}
+
+section.quatre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*min-height: 70vh;*/
+}
+
+section.firstclass .center p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #0000FF;
+}
+
+header button {
+    background-color: #0b0c16;
+    border-style: none;
+    /*color: #fffffe;
+    padding: 10px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s all;*/
+    color: white;
+    outline: none;
+    text-decoration: none;
+    transition: 0.3s all;
+    padding: 13px 20px;
+    border-radius: 5px;
+}
+
+label {
+    color: #34C924;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: normal;
+    padding: 15px 0;
+    color: white;
+}
+
+section.firstclass .center img *{
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+section.firstclass .center img.badge2 {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: normal;
+}
+
+img {
+    width: 100px;
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.premier-img {
+    margin: 100px;
+    padding: 0px;
+}
+
+</style>
+
+<section id="first" class="firstclass">
+        <div class="center">
+            <% message.forEach(function(msg) { %>
+                <% if(typeof msg == 'object' && msg.length > 0) { %>
+                    <section class="trois">
+                            <img src=<%= msg[0] %>></img><img src=<%= msg[1] %>></img><img src=<%= msg[2] %>></img><img src=<%= msg[3] %>></img>
+                    </section>
+                    <section class="deux">
+                        <img src=<%= msg[4] %>></img><img src=<%= msg[5] %>></img><img src=<%= msg[6] %>></img><img src=<%= msg[7] %>></img>
+                    </section>
+                            <% } else{ %>
+                    <li>
+                        <% if(msg.startsWith('Carte préféré:')){ %>
+                                <p>Carte préféré: </p><img src=<%= msg.slice(15) %>>
+                            <% }else { %>
+                                    <p><%= msg %></p>
+                            <% } %>
+                    </li>  
+                 <% } %>
+                
+            <% }); %>
+        </div>
+    </section>
+        <footer>
+            <p>Made with ❤️ by φυζαρ</p>
+        </footer>
+  
+  </body>
